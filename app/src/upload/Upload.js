@@ -75,7 +75,7 @@ class Upload extends Component {
       formData.append("file", file, file.name);
 
       
-      axios.post("http://localhost:8000/upload",formData).then((response) => {
+      axios.post("http://34.93.143.90:8000/upload",formData).then((response) => {
         console.log('Success');
         console.log(response);
       }).catch((error) => {
