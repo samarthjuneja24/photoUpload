@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Dropzone from "../dropzone/Dropzone";
 import "./Upload.css";
 import Progress from "../progress/Progress";
+const axios = require('axios');
 
 class Upload extends Component {
   constructor(props) {
@@ -73,8 +74,17 @@ class Upload extends Component {
       const formData = new FormData();
       formData.append("file", file, file.name);
 
-      req.open("POST", "http://localhost:8000/upload");
-      req.send(formData);
+      
+      axios.post("http://localhost:8000/upload",formData).then((response) => {
+        console.log('Success');
+        console.log(response);
+      }).catch((error) => {
+        console.log("Error");
+        console.log(error);
+      })
+
+      //req.open("POST", "http://localhost:8000/upload");
+      //req.send(formData);
     });
   }
 
