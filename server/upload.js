@@ -1,8 +1,7 @@
 const IncomingForm = require("formidable").IncomingForm;
 const {Storage} = require('@google-cloud/storage');
 const projectId = 'utopian-theater-258905'
-const keyFilename = '../../key.json'
-const storage = new Storage({projectId,keyFilename});
+const storage = new Storage({projectId});
 const fs = require("fs");
 const path = require("path");
 
@@ -17,7 +16,7 @@ module.exports = function upload(req, res) {
     });
 
     console.log(targetPath);
-    storage.bucket("typitoimagesave").upload(targetPath, {
+    storage.bucket("photo-upload-samarth").upload(targetPath, {
       gzip: true,
       metadata: {
         cacheControl: 'public, max-age=31536000',
